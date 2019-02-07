@@ -19,18 +19,27 @@ class SearchBar extends Component {
   }
 
   submitHandler(event) {
-    alert(this.state.search);
+    event.preventDefault();
+    if (this.state.search) {
+      this.props.history.push('/listabusqueda');
+    }
   }
 
     render() {
       return (
         <div>
-          <form onSubmit={this.submitHandler} onChange={this.handleInput}>
-            <input type="text" placeholder="Nunca dejes de buscar"></input>
-            <button type="submit">
-              <img src={icoLupa} alt='' />
-            </button>
-          </form>
+          <header className="header">
+            <form onSubmit={this.submitHandler} onChange={this.handleInput} className="contentHeader">
+           
+                <input type="text" placeholder="Nunca dejes de buscar" className="input"></input>
+                
+                <button type="submit">
+                  <img src={icoLupa} alt='' />
+                </button>
+
+              
+            </form>
+            </header>
         </div>
       );
     }

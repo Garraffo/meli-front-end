@@ -1,0 +1,19 @@
+.header{
+    background-color: darkcyan;
+    height: 60px;
+    display: inline-block;
+    width: 100%;
+    align-items: center;
+}
+
+.contentHeader{
+    align-items: center;
+    display: block;
+}
+
+.input{
+    height: 22px;
+    width: 60%;
+    padding: 2px;
+}
+
