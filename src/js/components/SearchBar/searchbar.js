@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './searchbar.css';
 import icoLupa from './ic_Search.png';
+import icoMELI from './hMPf-bdc.png';
 
 class SearchBar extends Component {
   constructor(props) {
@@ -29,16 +30,18 @@ class SearchBar extends Component {
       return (
         <div>
           <header className="header">
-            <form onSubmit={this.submitHandler} onChange={this.handleInput} className="contentHeader">
-           
-                <input type="text" placeholder="Nunca dejes de buscar" className="input"></input>
-                
-                <button type="submit">
-                  <img src={icoLupa} alt='' />
-                </button>
+            <div  className="contentHeader">
+              <img src={icoMELI} alt='' className="icoMeli"/>
+              <form onSubmit={this.submitHandler} onChange={this.handleInput}>
+                  <input type="text" placeholder="Nunca dejes de buscar" className="input"></input>
+                  
+                  <button type="submit" className="btnSearch">
+                    <img src={icoLupa} alt='' />
+                  </button>
 
-              
-            </form>
+                
+              </form>
+          </div>
             </header>
         </div>
       );
