@@ -22,7 +22,8 @@ class SearchBar extends Component {
   submitHandler(event) {
     event.preventDefault();
     if (this.state.search) {
-      this.props.history.push('/listabusqueda');
+      this.props.history.push({pathname: '/items', search:`search=${this.state.search}`});
+      
     }
   }
 
