@@ -6,7 +6,7 @@ import icoMELI from './hMPf-bdc.png';
 class SearchBar extends Component {
   constructor(props) {
     super(props);
-    this.state = { search: '' };
+    this.state = {search: ''};
     this.submitHandler = this.submitHandler.bind(this);
     this.handleInput = this.handleInput.bind(this);
   }

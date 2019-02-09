@@ -1,52 +1,21 @@
-import React, { Component } from 'react';
-import SearchBar from '../SearchBar/searchbar';
-import { parse } from 'qs';
+import React from 'react';
+import ItemListaBusqueda from './itemListaBusqueda';
 
-class ListaBusqueda extends Component{
-    constructor(props) {
-        super(props);
-    
-        let initialProducts = [];
-        let initialCategories = [];
-        
-        this.state = {
-          products: initialProducts,
-          categories: initialCategories
-         };
-      }
-    
+const ListaBusqueda = (props) => {
+    let productos = [];
 
-    componentDidMount(){
-        const search = parse(this.props.location.search.substr(1));
-        console.log(search);
-        this.setState({ search, products: [], categories: []});
-        
+    productos = props.productos.map((product) => {
+        return <ItemListaBusqueda key={product.id} product={product} />;
+    });
 
-        ListaBusqueda.getProducts(search.search)
-        .then((data)=>{
-            console.log(data);
-        })
-
-    }
-
-    static getProducts(search){
-        let url = "https://api.mercadolibre.com/sites/MLA/search?q=:" + search + "&limit=4";
-        console.log(url);
-        return fetch(url)
-            .then(response => response.json())
-            .catch(error => console.log(error));
-    }
-
-    render(){
-        return(
-            <div>
-                <SearchBar history={this.props.history}></SearchBar>
-                <div>
-                    <h1>Esta es una lista de busqueda</h1>
-                </div>
-            </div>
-        );
-    }
-}
+  
+    return (
+    <div className='justify-content-center'>
+      <ol id='searchResults' className='list-group container search-results'>
+        {productos}
+      </ol>
+    </div>
+    );
+};
 
 export default ListaBusqueda;
