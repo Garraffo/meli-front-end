@@ -7,6 +7,7 @@ class VistaDetalleProducto extends Component{
         super(props);        
         this.state = {
           producto: '',
+          descripcion: '',
           categorias: []
          };
       }
@@ -16,7 +17,7 @@ class VistaDetalleProducto extends Component{
         console.log("props location:");
         console.log(IDproducto);
 
-        VistaDetalleProducto.getProducts(IDproducto)
+        VistaDetalleProducto.getProducto(IDproducto)
             .then((data)=>{
                 console.log("data detalle producto");
                 console.log(data); 
@@ -25,29 +26,24 @@ class VistaDetalleProducto extends Component{
                 })
             })
 
-    }
-
-    componentDidUpdate(prevProps){
-        if(prevProps.location.pathname !== this.props.location.pathname){
-            const IDproducto = this.props.location.pathname.replace('/items/', '');
-            console.log("props location:");
-            console.log(IDproducto);
-    
-            VistaDetalleProducto.getProducts(IDproducto)
-                .then((data)=>{
-                    console.log("data detalle producto");
-                    console.log(data); 
-                    this.setState({
-                        producto: data
-                    })
+        VistaDetalleProducto.getDescripcionProducto(IDproducto)
+            .then((data)=>{
+                this.setState({
+                    descripcion: data
                 })
-        }
-
+            })
     }
 
-
-    static getProducts(IDproducto){
+    static getProducto(IDproducto){
         let url = "https://api.mercadolibre.com/items/" + IDproducto;
+        console.log(url);
+        return fetch(url)
+            .then(response => response.json())
+            .catch(error => console.log(error));
+    }
+
+    static getDescripcionProducto(IDproducto){
+        let url = "https://api.mercadolibre.com/items/" + IDproducto + "/description";
         console.log(url);
         return fetch(url)
             .then(response => response.json())
@@ -58,7 +54,7 @@ class VistaDetalleProducto extends Component{
         return(
             <div>
                 <SearchBar history={this.props.history}></SearchBar>
-                <DetalleProducto producto={this.state.producto}></DetalleProducto>
+                <DetalleProducto producto={this.state.producto} descripcion={this.state.descripcion}></DetalleProducto>
             </div>
         );
     }
