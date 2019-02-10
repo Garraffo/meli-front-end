@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import SearchBar from '../../components/SearchBar/searchbar';
 import ListaBusqueda from '../../components/ListaBusqueda/listabusqueda';
-
 import { parse } from 'qs';
+import BreadCrumbs from '../../components/BreadCrumb/breadcrumb';
 
 class BusquedaProductos extends Component{
     constructor(props) {
@@ -26,12 +26,16 @@ class BusquedaProductos extends Component{
             console.log(data);
             console.log("data.results");
             console.log(data.results);
+
             this.setState({
                 productos: data.results,
-                categorias: data.categories
+                categorias: data.filters[0].values[0].path_from_root
             });
             console.log("state.productos");
             console.log(this.state.productos);
+            console.log("state.categorias");
+            console.log(this.state.categorias);
+
         })
     }
 
@@ -44,16 +48,10 @@ class BusquedaProductos extends Component{
 
             BusquedaProductos.getProducts(search.search)
             .then((data)=>{
-                console.log("data");
-                console.log(data);
-                console.log("data.results");
-                console.log(data.results);
                 this.setState({
                     productos: data.results,
-                    categorias: data.categories
+                    categorias: data.filters[0].values[0].path_from_root
                 });
-                console.log("state.productos");
-                console.log(this.state.productos);
             })
         }
     }
@@ -66,11 +64,11 @@ class BusquedaProductos extends Component{
             .catch(error => console.log(error));
     }
 
-
     render(){
         return(
             <div>
                 <SearchBar history={this.props.history}></SearchBar>
+                <BreadCrumbs  categorias={this.state.categorias}></BreadCrumbs>
                 <ListaBusqueda productos={this.state.productos}></ListaBusqueda>
 
             </div>

@@ -7,8 +7,6 @@ const ListaBusqueda = (props) => {
     productos = props.productos.map((product) => {
         return <ItemListaBusqueda key={product.id} product={product} />;
     });
-
-  
     return (
     <div className='justify-content-center'>
       <ol id='searchResults' className='list-group container search-results'>

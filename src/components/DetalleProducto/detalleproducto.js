@@ -16,14 +16,13 @@ const DetalleProducto = (props) => {
             break;
     }
 
-
     return(
             <div>
                 <img src={props.producto.thumbnail} alt=''/><br />
                 {condicionProducto}
                 {props.producto.sold_quantity} vendidos
                 {props.producto.title}
-                {props.producto.price}<br />
+                ${props.producto.price}<br />
                 {props.descripcion.plain_text}
 
             </div>

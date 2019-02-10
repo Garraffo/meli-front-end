@@ -1,19 +1,17 @@
 import React from 'react';
-import _ from 'lodash';
 import './breadcrumb.css';
 
 const BreadCrumbs = (props) => {
   let breadcrumbs = [];
-  if (!_.isEmpty(props.crumbs)) {
-    breadcrumbs = props.crumbs.map((crumb) => {
-      return <li className='breadcrumb-item' key={crumb}>{crumb}</li>;
-    });
-  }
-
+  console.log("breadcrumbs props");
+  console.log(props);
+  breadcrumbs = props.categorias.map((nombreCategoria) =>{
+    return <li className='breadcrumb-item' key={nombreCategoria.id}>{nombreCategoria.name}</li>
+  }); 
   return (
-    <div className='container'>
-      <ol className='breadcrumb'>{breadcrumbs}</ol>
-    </div>
+    <div  className='container'>
+    <ol className='breadcrumb'>{breadcrumbs}</ol>
+  </div>
   );
 };
 

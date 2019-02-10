@@ -4,7 +4,6 @@ import ShippingImg from './ic_shipping.png';
 import './listabusqueda.css';
 
 const ItemListaBusqueda = (props) => {
-    console.log(props);
   return (
   <li className='list-group-item results-item'>
     <div className='item-image'>
