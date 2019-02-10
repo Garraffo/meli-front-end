@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import SearchBar from '../../components/SearchBar/searchbar';
-import BreadCrumbs from '../../components/BreadCrumb/breadcrumb';
 import ListaBusqueda from '../../components/ListaBusqueda/listabusqueda';
 
 import { parse } from 'qs';
