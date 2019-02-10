@@ -5,9 +5,9 @@ import './listabusqueda.css';
 
 const ItemListaBusqueda = (props) => {
   return (
-  <li className='list-group-item results-item'>
-    <div className='item-image'>
-        <div className='image-content'>
+  <li>
+    <div>
+        <div>
         <Link to={`/items/${props.product.id}`}>
             <img
             src={props.product.thumbnail}
@@ -16,23 +16,23 @@ const ItemListaBusqueda = (props) => {
         </Link>
         </div>
     </div>
-    <div className='item-info'>
+    <div>
         <div>
-        <div className='item-price'>
+        <div>
             <Link to={`/items/${props.product.id}`}>
             <span>${props.product.price}</span>
             </Link>
             { props.product.shipping.free_shipping &&
-            <img className='item-shipping' src={ShippingImg} alt='' />
+            <img src={ShippingImg} alt='' />
             }
-            <div className='item-address'>
+            <div>
             {props.product.address.state_name}
             </div>
         </div>
-        <h2 className='item-description'>
+        <h2>
             {props.product.title}
         </h2>
-        <div className='item-quantity'>
+        <div>
             Disponibles: {props.product.available_quantity}
         </div>
         </div>

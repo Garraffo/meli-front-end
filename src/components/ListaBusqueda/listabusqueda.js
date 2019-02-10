@@ -8,8 +8,8 @@ const ListaBusqueda = (props) => {
         return <ItemListaBusqueda key={product.id} product={product} />;
     });
     return (
-    <div className='justify-content-center'>
-      <ol id='searchResults' className='list-group container search-results'>
+    <div>
+      <ol id='searchResults'>
         {productos}
       </ol>
     </div>
