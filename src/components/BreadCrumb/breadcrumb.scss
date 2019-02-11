@@ -1,0 +1,26 @@
+ol{
+    list-style-type: none;
+}
+
+.breadcrumb {
+    padding: 0;
+    margin: 16px 0;
+    font-size: 14px;
+    color: #666666;
+    display: flex;
+
+    .breadcrumb-item{
+        margin-right: 5px;
+        
+        &:last-child{
+            font-weight: bold; 
+        }
+    }
+
+
+}
+
+.breadcrumb-item+.breadcrumb-item::before {
+    content: "> ";
+}
+

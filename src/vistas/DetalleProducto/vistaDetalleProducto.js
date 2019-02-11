@@ -1,49 +1,50 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import SearchBar from '../../components/SearchBar/searchbar';
 import DetalleProducto from '../../components/DetalleProducto/detalleproducto';
 import BreadCrumbs from '../../components/BreadCrumb/breadcrumb';
+import '../marcoBusquedaDetalle.scss'
 
-class VistaDetalleProducto extends Component{
+class VistaDetalleProducto extends Component {
     constructor(props) {
-        super(props);        
+        super(props);
         this.state = {
-          producto: '',
-          descripcion: '',
-          categorias: []
-         };
-      }
+            producto: '',
+            descripcion: '',
+            categorias: []
+        };
+    }
 
-    componentDidMount(){
+    componentDidMount() {
         const IDproducto = this.props.location.pathname.replace('/items/', '');
         VistaDetalleProducto.getProducto(IDproducto)
-            .then((data)=>{
+            .then((data) => {
                 console.log("data detalle producto");
-                console.log(data); 
+                console.log(data);
                 this.setState({
                     producto: data,
                 })
 
-            VistaDetalleProducto.getDescripcionProducto(IDproducto)
-                .then((data)=>{
-                    this.setState({
-                        descripcion: data
+                VistaDetalleProducto.getDescripcionProducto(IDproducto)
+                    .then((data) => {
+                        this.setState({
+                            descripcion: data
+                        })
                     })
-                })
 
-            VistaDetalleProducto.getCategoriaProducto(this.state.producto.category_id)
-                .then((data)=>{
-                    this.setState({
-                        categorias: data.path_from_root
+                VistaDetalleProducto.getCategoriaProducto(this.state.producto.category_id)
+                    .then((data) => {
+                        this.setState({
+                            categorias: data.path_from_root
+                        })
+                        console.log("categorias data");
+                        console.log(this.state.categorias);
                     })
-                    console.log("categorias data");
-                    console.log(this.state.categorias);  
-                })
-        
-        })
+
+            })
 
     }
 
-    static getProducto(IDproducto){
+    static getProducto(IDproducto) {
         let url = "https://api.mercadolibre.com/items/" + IDproducto;
         console.log(url);
         return fetch(url)
@@ -51,7 +52,7 @@ class VistaDetalleProducto extends Component{
             .catch(error => console.log(error));
     }
 
-    static getDescripcionProducto(IDproducto){
+    static getDescripcionProducto(IDproducto) {
         let url = "https://api.mercadolibre.com/items/" + IDproducto + "/description";
         console.log(url);
         return fetch(url)
@@ -59,7 +60,7 @@ class VistaDetalleProducto extends Component{
             .catch(error => console.log(error));
     }
 
-    static getCategoriaProducto(IDCategoria){
+    static getCategoriaProducto(IDCategoria) {
         let url = "https://api.mercadolibre.com/categories/" + IDCategoria;
         console.log(url);
         return fetch(url)
@@ -69,12 +70,14 @@ class VistaDetalleProducto extends Component{
 
 
 
-    render(){
-        return(
+    render() {
+        return (
             <div>
                 <SearchBar history={this.props.history}></SearchBar>
-                <BreadCrumbs  categorias={this.state.categorias}></BreadCrumbs>
-                <DetalleProducto producto={this.state.producto} descripcion={this.state.descripcion}></DetalleProducto>
+                <div className="marco">
+                    <BreadCrumbs categorias={this.state.categorias}></BreadCrumbs>
+                    <DetalleProducto producto={this.state.producto} descripcion={this.state.descripcion}></DetalleProducto>
+                </div>
             </div>
         );
     }

@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
-import './searchbar.css';
+import './searchbar.scss';
 import icoLupa from './ic_Search.png';
 import icoMELI from './hMPf-bdc.png';
+import icotest from './hhmm.png';
 
 class SearchBar extends Component {
   constructor(props) {
     super(props);
-    this.state = {search: ''};
+    this.state = { search: '' };
     this.submitHandler = this.submitHandler.bind(this);
     this.handleInput = this.handleInput.bind(this);
   }
@@ -22,31 +23,29 @@ class SearchBar extends Component {
   submitHandler(event) {
     event.preventDefault();
     if (this.state.search) {
-      this.props.history.push({pathname: '/items', search:`search=${this.state.search}`});
-      
+      this.props.history.push({ pathname: '/items', search: `search=${this.state.search}` });
+
     }
   }
 
-    render() {
-      return (
-        <div>
-          <header className="header">
-            <div  className="contentHeader">
-              <img src={icoMELI} alt='' className="icoMeli"/>
-              <form onSubmit={this.submitHandler} onChange={this.handleInput}>
-                  <input type="text" placeholder="Nunca dejes de buscar" className="input"></input>
-                  
-                  <button type="submit" className="btnSearch">
-                    <img src={icoLupa} alt='' />
-                  </button>
+  render() {
+    return (
+      <div>
+        <header className="header">
+          <div className="containerHeader">
+            <img src={icotest} alt='' className="icoMeli" />
 
-                
-              </form>
+            <form onSubmit={this.submitHandler} onChange={this.handleInput} className="formSearchBar">
+              <input type="text" placeholder="Nunca dejes de buscar" className="input"></input>
+              <button type="submit" className="btnSearch">
+                <img src={icoLupa} alt='' />
+              </button>
+            </form>
           </div>
-            </header>
-        </div>
-      );
-    }
+        </header>
+      </div>
+    );
   }
-  
-  export default SearchBar;
+}
+
+export default SearchBar;

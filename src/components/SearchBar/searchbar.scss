@@ -1,0 +1,55 @@
+$colorAmarillo: #FFE600;
+$colortest: #14416A;
+
+
+.header{
+    background-color: $colortest;
+    height: 60px;
+    width: 100%;
+}
+
+.containerHeader{
+    display: grid;
+    grid-template-columns: 1fr 90% 1fr;
+    padding: 10px;
+    width:70%;
+    margin: 0px auto;
+}
+
+.icoMeli{
+    width: 54px;
+    margin-right: 10px;
+}
+
+.formSearchBar{
+    display: grid;
+    grid-gap: 0px;
+    grid-template-columns: 100% 1fr;
+    float: left;
+}
+
+.input{
+    height: 25px;
+    padding: 5px;
+    padding-left: 8px;
+    border: 0.5px;
+    border-radius: 2px;
+    font-size: 15px;
+    width: 100%;
+
+    @media screen and (max-width: 800px){
+        //width: 70%;
+    }
+}
+
+.btnSearch{
+    height: 95%;
+    border: 0.5px;
+    border-radius: 2px;
+    background-color: #EEEEEE;
+
+    &:hover{
+        cursor: pointer;
+        background-color: rgb(221, 221, 221);
+    }
+}
