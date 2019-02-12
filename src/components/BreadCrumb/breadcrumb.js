@@ -3,8 +3,6 @@ import './breadcrumb.scss';
 
 const BreadCrumbs = (props) => {
   let breadcrumbs = [];
-  console.log("breadcrumbs props");
-  console.log(props);
   breadcrumbs = props.categorias.map((nombreCategoria) => {
     return <li className='breadcrumb-item' key={nombreCategoria.id}>{nombreCategoria.name}</li>
   });
