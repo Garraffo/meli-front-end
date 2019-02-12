@@ -27,16 +27,15 @@ class BusquedaProductos extends Component {
                 console.log(data);
                 console.log("data.results");
                 console.log(data.results);
-
-                this.setState({
-                    productos: data.results,
-                    categorias: data.filters[0].values[0].path_from_root
-                });
-                console.log("state.productos");
-                console.log(this.state.productos);
-                console.log("state.categorias");
-                console.log(this.state.categorias);
-
+                    this.setState({
+                        productos: data.results,
+                        categorias: data.filters[0].values[0].path_from_root
+                    });
+                    console.log("state.productos");
+                    console.log(this.state.productos);
+                    console.log("state.categorias");
+                    console.log(this.state.categorias);
+                
             })
     }
 

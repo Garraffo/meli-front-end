@@ -5,7 +5,7 @@ import './listabusqueda.scss';
 
 const ItemListaBusqueda = (props) => {
     let disponibles = '';
-    if(props.product.available_quantity == '1'){
+    if(props.product.available_quantity === '1'){
         disponibles = 'Único disponible!'
     }else{
         disponibles = props.product.available_quantity;
