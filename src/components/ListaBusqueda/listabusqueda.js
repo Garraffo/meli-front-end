@@ -1,6 +1,7 @@
 import React from 'react';
 import ItemListaBusqueda from './itemListaBusqueda';
 
+
 const ListaBusqueda = (props) => {
     let productos = [];
 

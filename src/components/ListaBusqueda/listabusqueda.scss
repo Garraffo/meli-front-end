@@ -1,0 +1,44 @@
+$colorTexto: #333333;
+
+.itemsProductos{
+    margin-top: 16px;
+    margin-bottom: 16px;
+}
+
+.containerItemBusqueda{
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    color: $colorTexto;
+}
+
+
+.thumbnailProducto{
+    width: 180px;
+    border-radius: 4px;
+}
+
+.precio{
+    margin-bottom: 32px;
+}
+
+.numeroPrecio{
+    font-size: 24px;
+    margin-right: 10px;
+}
+
+.precioTituloDisponibles{
+    font-size: 18px;
+    text-align: left;
+    padding-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.address{
+    font-size: 12px;
+    padding: 25px;
+}
+
+a{
+    text-decoration: none;
+}

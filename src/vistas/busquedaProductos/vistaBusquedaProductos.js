@@ -69,8 +69,10 @@ class BusquedaProductos extends Component {
         return (
             <div>
                 <SearchBar history={this.props.history}></SearchBar>
-                <div className="marco">
+                <div className="marcoBreadCrumbs">
                     <BreadCrumbs categorias={this.state.categorias}></BreadCrumbs>
+                </div>
+                <div className="marcoResultado">
                     <ListaBusqueda productos={this.state.productos}></ListaBusqueda>
                 </div>
             </div>

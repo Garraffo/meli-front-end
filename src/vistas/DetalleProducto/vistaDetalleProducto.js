@@ -74,8 +74,10 @@ class VistaDetalleProducto extends Component {
         return (
             <div>
                 <SearchBar history={this.props.history}></SearchBar>
-                <div className="marco">
+                <div className="marcoBreadCrumbs">
                     <BreadCrumbs categorias={this.state.categorias}></BreadCrumbs>
+                </div>
+                <div className="marcoResultado">
                     <DetalleProducto producto={this.state.producto} descripcion={this.state.descripcion}></DetalleProducto>
                 </div>
             </div>

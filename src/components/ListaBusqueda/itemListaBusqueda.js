@@ -1,43 +1,43 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import ShippingImg from './ic_shipping.png';
-import './listabusqueda.css';
+import './listabusqueda.scss';
 
 const ItemListaBusqueda = (props) => {
+    let disponibles = '';
+    if(props.product.available_quantity == '1'){
+        disponibles = 'Único disponible!'
+    }else{
+        disponibles = props.product.available_quantity;
+    }
+
+
   return (
-  <li>
-    <div>
-        <div>
-        <Link to={`/items/${props.product.id}`}>
-            <img
-            src={props.product.thumbnail}
-            alt=''
-            />
-        </Link>
-        </div>
-    </div>
-    <div>
-        <div>
-        <div>
-            <Link to={`/items/${props.product.id}`}>
-            <span>${props.product.price}</span>
-            </Link>
-            { props.product.shipping.free_shipping &&
-            <img src={ShippingImg} alt='' />
-            }
+  <li className="itemsProductos">
+    <Link to={`/items/${props.product.id}`}>
+        <div className="containerItemBusqueda">
             <div>
-            {props.product.address.state_name}
+                <img
+                src={props.product.thumbnail}
+                alt=''
+                className="thumbnailProducto"/>
+            </div>
+            <div className="precioTituloDisponibles">
+                <div className="precio">
+                    <span className="numeroPrecio">${props.product.price}</span>
+                
+                    { props.product.shipping.free_shipping &&
+                    <img src={ShippingImg} alt='' />
+                    }
+                </div>
+                <div> {props.product.title} </div>
+                <div> Disponibles: {disponibles} </div>
+            </div>
+            <div className="address">
+                {props.product.address.state_name}
             </div>
         </div>
-        <h2>
-            {props.product.title}
-        </h2>
-        <div>
-            Disponibles: {props.product.available_quantity}
-        </div>
-        </div>
-    </div>
-    <hr></hr>
+    </Link>
 </li>
   );
 };
