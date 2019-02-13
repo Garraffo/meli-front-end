@@ -1,8 +1,8 @@
-import React from 'react'
+import React from 'react';
+import { parse } from 'qs';
 
 const DetalleProducto = (props) => {
-    console.log("props en Detalle Producto:");
-    console.log(props);
+  
     let condicionProducto = '';
     switch(props.producto.condition){
         case 'new':
@@ -18,7 +18,7 @@ const DetalleProducto = (props) => {
 
     return(
             <div>
-                <img src={props.producto.thumbnail} alt=''/><br />
+                {props.producto.pictures !== undefined && <div><img src={props.producto.pictures[0].url} alt=''/><br /> </div> }
                 {condicionProducto}
                 {props.producto.sold_quantity} vendidos
                 {props.producto.title}

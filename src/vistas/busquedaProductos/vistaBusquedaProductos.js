@@ -6,6 +6,8 @@ import BreadCrumbs from '../../components/BreadCrumb/breadcrumb';
 import '../marcoBusquedaDetalle.scss';
 import ProductoNoEncontrado from '../../components/ListaBusqueda/productonoencontrado';
 
+const limiteQuery = '4';
+
 class BusquedaProductos extends Component {
     constructor(props) {
         super(props);
@@ -16,6 +18,8 @@ class BusquedaProductos extends Component {
         };
 
     }
+
+    
 
     componentDidMount() {
         const search = parse(this.props.location.search.substr(1));
@@ -64,7 +68,7 @@ class BusquedaProductos extends Component {
     }
 
     static getProducts(search) {
-        let url = "https://api.mercadolibre.com/sites/MLA/search?q=:" + search + "&limit=4";
+        let url = "https://api.mercadolibre.com/sites/MLA/search?q=:" + search + "&limit=" + limiteQuery;
         console.log("REQUEST");
         return fetch(url)
             .then(response => response.json())
@@ -90,8 +94,11 @@ class BusquedaProductos extends Component {
                                 </div>
                             </div>
                         ) : (
-                                <div><ProductoNoEncontrado></ProductoNoEncontrado> </div>
+                            <div className="marcoResultado">
+                                <ProductoNoEncontrado></ProductoNoEncontrado>
+                            </div>
                             )}
+                            
                     </div>}
             </div>
         );
