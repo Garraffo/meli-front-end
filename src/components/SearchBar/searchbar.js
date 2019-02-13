@@ -3,6 +3,7 @@ import './searchbar.scss';
 import icoLupa from './ic_Search.png';
 import icoMELI from './hMPf-bdc.png';
 import icotest from './hhmm.png';
+import { Link } from 'react-router-dom';
 
 class SearchBar extends Component {
   constructor(props) {
@@ -33,8 +34,9 @@ class SearchBar extends Component {
       <div>
         <header className="header">
           <div className="containerHeader">
+          <Link to={`/`}>
             <img src={icotest} alt='' className="icoMeli" />
-
+          </Link>
             <form onSubmit={this.submitHandler} onChange={this.handleInput} className="formSearchBar">
               <input type="text" placeholder="Nunca dejes de buscar" className="input"></input>
               <button type="submit" className="btnSearch">

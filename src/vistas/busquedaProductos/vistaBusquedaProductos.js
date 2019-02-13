@@ -4,7 +4,7 @@ import ListaBusqueda from '../../components/ListaBusqueda/listabusqueda';
 import { parse } from 'qs';
 import BreadCrumbs from '../../components/BreadCrumb/breadcrumb';
 import '../marcoBusquedaDetalle.scss';
-import ProductoNoEncontrado from '../ProductoNoEncontrado/productonoencontrado';
+import ProductoNoEncontrado from '../../components/ListaBusqueda/productonoencontrado';
 
 class BusquedaProductos extends Component {
     constructor(props) {
@@ -28,10 +28,13 @@ class BusquedaProductos extends Component {
                 if (data.filters.length > 0) {
                     this.setState({
                         productos: data.results,
-                        categorias: data.filters[0].values[0].path_from_root,
-                        showResultado: true
+                        categorias: data.filters[0].values[0].path_from_root
                     });
+
                 }
+                console.log("data.results");
+                console.log(data.results);
+                this.setState({showResultado: true});
             })
     }
 
@@ -44,13 +47,18 @@ class BusquedaProductos extends Component {
             BusquedaProductos.getProducts(search.search)
                 .then((data) => {
                     console.log("RESPONSE");
-                    if (data.filters.length > 0) {
+                    //Verifico si trajo resultados a través de data.filters porque hubo casos de prueba 
+                    //en los que a pesar de ingresar algo inexistente, el servicio respondió con productos sin relación entre ellos
+                    if (data.filters.length > 0) { 
                         this.setState({
                             productos: data.results,
-                            categorias: data.filters[0].values[0].path_from_root,
-                            showResultado: true
+                            categorias: data.filters[0].values[0].path_from_root
                         });
+
                     }
+                    console.log("data.results");
+                    console.log(data.results);
+                    this.setState({showResultado: true});
                 })
         }
     }
@@ -66,6 +74,7 @@ class BusquedaProductos extends Component {
     render() {
         console.log("rendering");
         console.log(this.state.showResultado);
+        console.log(this.state.productos.length);
         return (
             <div>
                 <SearchBar history={this.props.history}></SearchBar>
