@@ -1,10 +1,16 @@
 .marcoResultado{
     width: 70%;
     margin: auto;
+    margin-top: 20px;
     margin-bottom: 20px;
     background-color: #ffffff;
-    padding-top: 16px;
+    padding: 16px;
 
+    @media screen and (max-width: 800px) {
+        margin-left: 20px;
+        margin-right: 20px;
+        width: 87%;
+    }
 
 }
 

@@ -19,16 +19,27 @@ class BusquedaProductos extends Component {
 
     }
 
-    
 
     componentDidMount() {
+        this.buscarProductos();
+    }
+
+    componentDidUpdate(prevProps) {
+        if (prevProps.location.search !== this.props.location.search) {
+            this.buscarProductos();
+        }
+    }
+
+    buscarProductos() {
         const search = parse(this.props.location.search.substr(1));
         this.setState({ search, productos: [], categorias: [], showResultado: false });
 
 
-        BusquedaProductos.getProducts(search.search)
+        this.getProductos(search.search)
             .then((data) => {
                 console.log("RESPONSE");
+                //Verifico si trajo resultados a través de data.filters porque hubo casos de prueba 
+                //en los que a pesar de ingresar algo inexistente, el servicio respondió con productos sin relación entre ellos
                 if (data.filters.length > 0) {
                     this.setState({
                         productos: data.results,
@@ -38,41 +49,20 @@ class BusquedaProductos extends Component {
                 }
                 console.log("data.results");
                 console.log(data.results);
-                this.setState({showResultado: true});
+                this.setState({ showResultado: true });
             })
     }
 
-    componentDidUpdate(prevProps) {
-        if (prevProps.location.search !== this.props.location.search) {
-            const search = parse(this.props.location.search.substr(1));
-            this.setState({ search, productos: [], categorias: [], showResultado: false });
-
-
-            BusquedaProductos.getProducts(search.search)
-                .then((data) => {
-                    console.log("RESPONSE");
-                    //Verifico si trajo resultados a través de data.filters porque hubo casos de prueba 
-                    //en los que a pesar de ingresar algo inexistente, el servicio respondió con productos sin relación entre ellos
-                    if (data.filters.length > 0) { 
-                        this.setState({
-                            productos: data.results,
-                            categorias: data.filters[0].values[0].path_from_root
-                        });
-
-                    }
-                    console.log("data.results");
-                    console.log(data.results);
-                    this.setState({showResultado: true});
-                })
-        }
-    }
-
-    static getProducts(search) {
+    async getProductos(search) {
         let url = "https://api.mercadolibre.com/sites/MLA/search?q=:" + search + "&limit=" + limiteQuery;
         console.log("REQUEST");
-        return fetch(url)
-            .then(response => response.json())
-            .catch(error => console.log(error));
+        try {
+            const response = await fetch(url);
+            return await response.json();
+        }
+        catch (error) {
+            return console.log(error);
+        }
     }
 
     render() {
@@ -94,11 +84,11 @@ class BusquedaProductos extends Component {
                                 </div>
                             </div>
                         ) : (
-                            <div className="marcoResultado">
-                                <ProductoNoEncontrado></ProductoNoEncontrado>
-                            </div>
+                                <div className="marcoResultado">
+                                    <ProductoNoEncontrado></ProductoNoEncontrado>
+                                </div>
                             )}
-                            
+
                     </div>}
             </div>
         );
