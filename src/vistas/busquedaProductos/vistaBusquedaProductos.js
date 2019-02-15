@@ -5,6 +5,7 @@ import { parse } from 'qs';
 import BreadCrumbs from '../../components/BreadCrumb/breadcrumb';
 import '../marcoBusquedaDetalle.scss';
 import ProductoNoEncontrado from '../../components/ListaBusqueda/productonoencontrado';
+import Spinner from '../../components/Spinner/spinner';
 
 const limiteQuery = '4';
 
@@ -71,8 +72,8 @@ class BusquedaProductos extends Component {
         console.log(this.state.productos.length);
         return (
             <div>
-                <SearchBar history={this.props.history}></SearchBar>
-                {this.state.showResultado === true &&
+                <SearchBar history={this.props.history} className="marcoSearchBar"></SearchBar>
+                {this.state.showResultado === true ? (
                     <div>
                         {this.state.productos.length > 0 ? (
                             <div>
@@ -89,7 +90,12 @@ class BusquedaProductos extends Component {
                                 </div>
                             )}
 
-                    </div>}
+                    </div> 
+                ) : (
+                    <div>
+                        <Spinner></Spinner>
+                    </div>
+                )}
             </div>
         );
     }

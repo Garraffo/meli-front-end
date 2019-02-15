@@ -8,6 +8,7 @@ ol{
     font-size: 14px;
     color: #666666;
     display: flex;
+    flex-wrap: wrap;
 
     .breadcrumb-item{
         margin-right: 5px;

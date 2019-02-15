@@ -1,4 +1,5 @@
 import React from 'react';
+import './detalleproducto.scss'
 
 const DetalleProducto = (props) => {
 
@@ -15,15 +16,34 @@ const DetalleProducto = (props) => {
             break;
     }
 
-    return (
-        <div>
-            {props.producto.pictures !== undefined && <div><img src={props.producto.pictures[0].url} alt='' /><br /> </div>}
-            {condicionProducto}
-            {props.producto.sold_quantity} vendidos
-                {props.producto.title}
-            ${props.producto.price}<br />
-            {props.descripcion.plain_text}
 
+    console.log("plain text desc");
+    console.log(props.descripcion.plain_text);
+    console.log("vendidos");
+    console.log(props.producto.sold_quantity)
+
+    return (
+        <div className="containerDetalleProducto">
+                        {props.producto.pictures !== undefined && 
+                        <div className="galeria">
+                            <img src={props.producto.pictures[0].url} className="fotoProducto" alt='' /><br /> 
+                        </div>}
+
+                    <div className="infoProducto">  
+                        <div className="condicion_cantidad">
+                            {condicionProducto}{props.producto.sold_quantity !== 0 && ` - ${props.producto.sold_quantity} vendidos`}
+                        </div>
+                            
+                        <div className="tituloProducto">{props.producto.title}</div>
+                        <div className="precio">${props.producto.price}</div>
+                        <button className="btnComprar">Comprar</button>
+                    </div>
+                <div className="descripcion"> 
+                    <h2>Descripción del producto</h2>
+                    <div className="textoDescripcion">
+                        {props.descripcion.plain_text}
+                    </div>
+                </div>
         </div>
     );
 

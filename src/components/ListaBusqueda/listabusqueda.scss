@@ -1,14 +1,11 @@
 $colorTexto: #333333;
 
-.itemsProductos{
-    margin-top: 16px;
-    margin-bottom: 16px;
-}
-
 .containerItemBusqueda{
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
     color: $colorTexto;
+    margin-top: 16px;
+    margin-bottom: 16px;
 }
 
 
@@ -17,7 +14,7 @@ $colorTexto: #333333;
     border-radius: 4px;
 }
 
-.precio{
+.precioBusqueda{
     margin-bottom: 32px;
 }
 
@@ -46,6 +43,19 @@ a{
 
 
 .productoNoEncontrado{
-    text-align: center;
-    font-size: 30px;
+    text-align: left;
+    padding: 40px;
+    width: 70%;
+    margin: auto;
+    h2{
+        font-size: 25px;
+    }
+    li{
+        font-size: 20px;
+    }
+
+}
+
+hr{
+    border: 1px solid #eeeeee;
 }

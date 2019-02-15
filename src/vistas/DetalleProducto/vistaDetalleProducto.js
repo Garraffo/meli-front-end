@@ -3,6 +3,7 @@ import SearchBar from '../../components/SearchBar/searchbar';
 import DetalleProducto from '../../components/DetalleProducto/detalleproducto';
 import BreadCrumbs from '../../components/BreadCrumb/breadcrumb';
 import '../marcoBusquedaDetalle.scss'
+import Spinner from '../../components/Spinner/spinner';
 
 class VistaDetalleProducto extends Component {
     constructor(props) {
@@ -10,7 +11,8 @@ class VistaDetalleProducto extends Component {
         this.state = {
             producto: '',
             descripcion: '',
-            categorias: []
+            categorias: [],
+            showResultado: false
         };
     }
 
@@ -34,12 +36,13 @@ class VistaDetalleProducto extends Component {
                 VistaDetalleProducto.getCategoriaProducto(this.state.producto.category_id)
                     .then((data) => {
                         this.setState({
-                            categorias: data.path_from_root
+                            categorias: data.path_from_root,
+                            showResultado: true
                         })
                         console.log("categorias data");
                         console.log(this.state.categorias);
                     })
-
+                    
             })
 
     }
@@ -74,12 +77,20 @@ class VistaDetalleProducto extends Component {
         return (
             <div>
                 <SearchBar history={this.props.history}></SearchBar>
-                <div className="marcoBreadCrumbs">
-                    <BreadCrumbs categorias={this.state.categorias}></BreadCrumbs>
+                {this.state.showResultado === true ? (
+                    <div> 
+                        <div className="marcoBreadCrumbs">
+                            <BreadCrumbs categorias={this.state.categorias}></BreadCrumbs>
+                        </div>
+                        <div className="marcoResultado">
+                            <DetalleProducto producto={this.state.producto} descripcion={this.state.descripcion}></DetalleProducto>
+                        </div>
+                    </div>
+                ) : (
+                    <div>
+                        <Spinner></Spinner>
                 </div>
-                <div className="marcoResultado">
-                    <DetalleProducto producto={this.state.producto} descripcion={this.state.descripcion}></DetalleProducto>
-                </div>
+                )}
             </div>
         );
     }
