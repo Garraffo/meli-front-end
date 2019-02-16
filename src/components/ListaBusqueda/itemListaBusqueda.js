@@ -4,6 +4,11 @@ import ShippingImg from './ic_shipping.png';
 import './listabusqueda.scss';
 
 const ItemListaBusqueda = (props) => {
+
+
+
+
+
   return (
   <li className="itemsProductos">
     <Link to={`/items/${props.product.id}`}>
@@ -16,7 +21,7 @@ const ItemListaBusqueda = (props) => {
             </div>
             <div className="precioTituloDisponibles">
                 <div className="precioBusqueda">
-                    <span className="numeroPrecio">${props.product.price}</span>
+                    <span className="numeroPrecio">${props.product.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</span>
                 
                     { props.product.shipping.free_shipping &&
                     <img src={ShippingImg} alt='' />

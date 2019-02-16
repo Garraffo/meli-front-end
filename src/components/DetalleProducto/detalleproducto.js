@@ -17,11 +17,6 @@ const DetalleProducto = (props) => {
     }
 
 
-    console.log("plain text desc");
-    console.log(props.descripcion.plain_text);
-    console.log("vendidos");
-    console.log(props.producto.sold_quantity)
-
     return (
         <div className="containerDetalleProducto">
                         {props.producto.pictures !== undefined && 
@@ -35,7 +30,7 @@ const DetalleProducto = (props) => {
                         </div>
                             
                         <div className="tituloProducto">{props.producto.title}</div>
-                        <div className="precio">${props.producto.price}</div>
+                        <div className="precio">${props.producto.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</div>
                         <button className="btnComprar">Comprar</button>
                     </div>
                 <div className="descripcion"> 

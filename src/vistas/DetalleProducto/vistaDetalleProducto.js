@@ -20,27 +20,28 @@ class VistaDetalleProducto extends Component {
         const IDproducto = this.props.location.pathname.replace('/items/', '');
         VistaDetalleProducto.getProducto(IDproducto)
             .then((data) => {
-                console.log("data detalle producto");
-                console.log(data);
-                this.setState({
-                    producto: data,
-                })
-
+                if(data !== undefined){
+                    this.setState({
+                        producto: data,
+                    })
+                }
                 VistaDetalleProducto.getDescripcionProducto(IDproducto)
                     .then((data) => {
-                        this.setState({
-                            descripcion: data
-                        })
+                        if(data !== undefined){
+                            this.setState({
+                                descripcion: data
+                            })
+                        }
                     })
 
                 VistaDetalleProducto.getCategoriaProducto(this.state.producto.category_id)
                     .then((data) => {
-                        this.setState({
-                            categorias: data.path_from_root,
-                            showResultado: true
-                        })
-                        console.log("categorias data");
-                        console.log(this.state.categorias);
+                        if(data.path_from_root !== undefined){
+                            this.setState({
+                                categorias: data.path_from_root,
+                                showResultado: true
+                            })
+                        }
                     })
                     
             })
