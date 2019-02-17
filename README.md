@@ -14,7 +14,7 @@ Luego al presionar sobre cualquier publicación accederemos a la vista detallePr
 
 
 
-# Instrucciones de ejecución
+## Instrucciones de ejecución
 Debe poseer Node instalado. Una vez descargado el proyecto, ubicarse con una terminal en la carpeta del mismo y seguir las siguientes instrucciones:
 
 ## Descargar las dependencias del proyecto.
