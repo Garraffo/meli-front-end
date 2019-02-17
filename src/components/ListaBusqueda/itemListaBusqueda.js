@@ -21,7 +21,7 @@ const ItemListaBusqueda = (props) => {
             </div>
             <div className="precioTituloDisponibles">
                 <div className="precioBusqueda">
-                    <span className="numeroPrecio">${props.product.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</span>
+                    <span className="numeroPrecio">${Math.trunc(props.product.price).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}</span>
                 
                     { props.product.shipping.free_shipping &&
                     <img src={ShippingImg} alt='' />

@@ -72,7 +72,7 @@ class BusquedaProductos extends Component {
         console.log(this.state.productos.length);
         return (
             <div>
-                <SearchBar history={this.props.history} className="marcoSearchBar"></SearchBar>
+                <SearchBar history={this.props.history}></SearchBar>
                 {this.state.showResultado === true ? (
                     <div>
                         {this.state.productos.length > 0 ? (
