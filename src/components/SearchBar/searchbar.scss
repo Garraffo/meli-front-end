@@ -4,10 +4,8 @@ $colorAmarillo: #FFE600;
     background-color: $colorAmarillo;
     height: 60px;
     width: 100%;
+    min-width: 830px;
 
-    @media screen and (max-width: 500px) {
-        min-width: 100px;
-    }
 }
 
 .containerHeader{
@@ -28,6 +26,7 @@ $colorAmarillo: #FFE600;
 
     @media screen and (max-width: 500px) {
         margin: 0 30px;
+        width: 50%;
     }
 
 }
