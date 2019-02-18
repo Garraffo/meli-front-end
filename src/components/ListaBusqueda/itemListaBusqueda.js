@@ -29,7 +29,7 @@ const ItemListaBusqueda = (props) => {
                         <div> {props.product.title} </div>
 
                         {props.product.available_quantity === 1 ? (
-                            <div>Único disponible!</div>
+                            <div>¡Único disponible!</div>
                         ):(
                             <div> Disponibles: {props.product.available_quantity} </div>
                         )}
