@@ -50,7 +50,6 @@ class VistaDetalleProducto extends Component {
 
     static getProducto(IDproducto) {
         let url = "https://api.mercadolibre.com/items/" + IDproducto;
-        console.log(url);
         return fetch(url)
             .then(response => response.json())
             .catch(error => console.log(error));
@@ -58,7 +57,6 @@ class VistaDetalleProducto extends Component {
 
     static getDescripcionProducto(IDproducto) {
         let url = "https://api.mercadolibre.com/items/" + IDproducto + "/description";
-        console.log(url);
         return fetch(url)
             .then(response => response.json())
             .catch(error => console.log(error));
@@ -66,7 +64,6 @@ class VistaDetalleProducto extends Component {
 
     static getCategoriaProducto(IDCategoria) {
         let url = "https://api.mercadolibre.com/categories/" + IDCategoria;
-        console.log(url);
         return fetch(url)
             .then(response => response.json())
             .catch(error => console.log(error));

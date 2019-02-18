@@ -31,11 +31,6 @@ $colorAmarillo: #FFE600;
 
 }
 
-
-
-
-
-
 .icoMeli{
     width: 54px;
     margin-right: 10px;
@@ -55,6 +50,11 @@ $colorAmarillo: #FFE600;
     border-radius: 2px;
     font-size: 18px;
     width: 99%;
+    color: #333333;
+
+    &::placeholder{
+        color: #999999;
+    }
 }
 
 .btnSearch{

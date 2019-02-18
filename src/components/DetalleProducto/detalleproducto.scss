@@ -67,7 +67,7 @@
 
 @media screen and (max-width: 1600px) {
     .containerDetalleProducto{
-        grid-template-columns: 1fr 30%;
+        grid-template-columns: 70% 30%;
         grid-template-rows: min-content min-content;
     }
 
@@ -90,5 +90,6 @@
         grid-template-columns: 680px;
         grid-template-rows: min-content min-content min-content;
     }
+
 
 }

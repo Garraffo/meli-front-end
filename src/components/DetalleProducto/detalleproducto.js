@@ -16,6 +16,8 @@ const DetalleProducto = (props) => {
             break;
     }
 
+    //Precio formateado
+    let precio = Math.trunc(props.producto.price).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
     return (
         <div className="containerDetalleProducto">
@@ -30,7 +32,7 @@ const DetalleProducto = (props) => {
                 </div>
                     
                 <div className="tituloProducto">{props.producto.title}</div>
-                <div className="precio">${Math.trunc(props.producto.price).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}</div>
+                <div className="precio">${precio}</div>
                 <button className="btnComprar">Comprar</button>
             </div>
             <div className="descripcion"> 

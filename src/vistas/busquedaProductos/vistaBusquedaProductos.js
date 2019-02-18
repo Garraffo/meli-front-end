@@ -38,7 +38,7 @@ class BusquedaProductos extends Component {
 
         this.getProductos(search.search)
             .then((data) => {
-                console.log("RESPONSE");
+                //RESPONSE
                 //Verifico si trajo resultados a través de data.filters porque hubo casos de prueba 
                 //en los que a pesar de ingresar algo inexistente, el servicio respondió con productos sin relación entre ellos
                 if (data.filters.length > 0) {
@@ -48,15 +48,13 @@ class BusquedaProductos extends Component {
                     });
 
                 }
-                console.log("data.results");
-                console.log(data.results);
                 this.setState({ showResultado: true });
             })
     }
 
     async getProductos(search) {
         let url = "https://api.mercadolibre.com/sites/MLA/search?q=:" + search + "&limit=" + limiteQuery;
-        console.log("REQUEST");
+        //REQUEST
         try {
             const response = await fetch(url);
             return await response.json();
@@ -67,9 +65,6 @@ class BusquedaProductos extends Component {
     }
 
     render() {
-        console.log("rendering");
-        console.log(this.state.showResultado);
-        console.log(this.state.productos.length);
         return (
             <div>
                 <SearchBar history={this.props.history}></SearchBar>
