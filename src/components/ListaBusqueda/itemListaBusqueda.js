@@ -19,7 +19,7 @@ const ItemListaBusqueda = (props) => {
                     </div>
                     <div className="precioTituloDisponibles">
                         <div className="precioBusqueda">
-                            <span className="numeroPrecio">${precio}</span>
+                            <span className="numeroPrecio">$ {precio}</span>
                         
                             { props.product.shipping.free_shipping &&
                             <img src={ShippingImg} alt='' />

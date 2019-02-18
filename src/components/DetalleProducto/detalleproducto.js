@@ -32,7 +32,7 @@ const DetalleProducto = (props) => {
                 </div>
                     
                 <div className="tituloProducto">{props.producto.title}</div>
-                <div className="precio">${precio}</div>
+                <div className="precio">$ {precio}</div>
                 <button className="btnComprar">Comprar</button>
             </div>
             <div className="descripcion"> 
